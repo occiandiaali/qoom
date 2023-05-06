@@ -8,12 +8,55 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AmbitScreen from "../../features/ambit";
 import FavLinksScreen from "../../features/favlinks";
 import StickerSmashScreen from "../../features/smasher";
+import { createStackNavigator } from "@react-navigation/stack";
+import ProfileScreen from "../../features/account/profile";
+import SettingsScreen from "../../features/ambit/settings";
+import LinkDetailScreen from "../../features/favlinks/LinkDetailScreen";
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
+
+function AmbitStack() {
+  return (
+    <Stack.Navigator
+      initialRouteName="ambit"
+      screenOptions={{ gestureDirection: "horizontal-inverted" }}
+    >
+      <Stack.Screen
+        options={{
+          headerShown: false,
+        }}
+        name="ambit"
+        component={AmbitScreen}
+      />
+      <Stack.Screen name="profile" component={ProfileScreen} />
+      <Stack.Screen name="settings" component={SettingsScreen} />
+    </Stack.Navigator>
+  );
+}
+
+function LinksStack() {
+  return (
+    <Stack.Navigator
+      initialRouteName="links"
+      screenOptions={{ gestureDirection: "horizontal-inverted" }}
+    >
+      <Stack.Screen
+        options={{
+          headerShown: false,
+        }}
+        name="links"
+        component={FavLinksScreen}
+      />
+      <Stack.Screen name="linkAdd" component={LinkDetailScreen} />
+    </Stack.Navigator>
+  );
+}
 
 const BottomNav = () => {
   return (
     <Tab.Navigator
+      initialRouteName="Ambit"
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarStyle: {
@@ -41,12 +84,11 @@ const BottomNav = () => {
       })}
     >
       <Tab.Screen name="Smasher" component={StickerSmashScreen} />
-      <Tab.Screen name="Ambit" component={AmbitScreen} />
-      <Tab.Screen name="Links" component={FavLinksScreen} />
+      {/* <Tab.Screen name="Ambit" component={AmbitScreen} /> */}
+      <Tab.Screen name="Ambit" component={AmbitStack} />
+      <Tab.Screen name="Links" component={LinksStack} />
     </Tab.Navigator>
   );
 };
 
 export default BottomNav;
-
-const styles = StyleSheet.create({});

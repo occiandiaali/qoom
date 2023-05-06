@@ -31,6 +31,7 @@ const AmbitScreen = () => {
     <SafeAreaView style={styles.container}>
       <AccountBar />
       <FlatList
+        showsVerticalScrollIndicator={false}
         data={usernames}
         renderItem={({ item }) => <FeedCardComponent username={item.user} />}
         keyExtractor={(item) => item.id.toString()}
