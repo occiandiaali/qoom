@@ -10,6 +10,5 @@ React Native Expo, GraphQL, AWS, Redux, and API multifarious app
   
 <img src="https://user-images.githubusercontent.com/40769994/236683855-45c51649-ba91-4d47-8f5c-09809814b757.jpg" height="500">  <img src="https://user-images.githubusercontent.com/40769994/236692093-6f8c7990-f73e-423d-af42-c554cf0f3ad4.jpg" height="500">  <img src="https://user-images.githubusercontent.com/40769994/236683860-2549c7c5-6f02-4a61-9580-ed6490d4f50d.jpg" height="500">
 
-<img src="https://user-images.githubusercontent.com/40769994/236692089-d4d09eb3-4c16-4858-9e16-2f51b9ffc522.jpg" height="500">
-
+<img src="https://user-images.githubusercontent.com/40769994/236692089-d4d09eb3-4c16-4858-9e16-2f51b9ffc522.jpg" height="500">  <img src="https://user-images.githubusercontent.com/40769994/236695399-2409cb5b-160e-41aa-a667-ff29a69df039.jpg" height="500">
 
