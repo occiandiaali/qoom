@@ -10,7 +10,6 @@ const AccountBar = () => {
       <MaterialCommunityIcons
         onPress={() => navigation.navigate("profile")}
         name="account-circle"
-        color="orange"
         size={46}
       />
       <Text style={{ fontSize: 18, fontWeight: "600" }}>Activity Feed</Text>
@@ -18,14 +17,12 @@ const AccountBar = () => {
         <MaterialCommunityIcons
           name="lead-pencil"
           size={18}
-          color="orange"
           style={{ paddingRight: 16, top: 4 }}
         />
         <Ionicons
           onPress={() => navigation.navigate("settings")}
           name="md-settings-outline"
           size={24}
-          color="orange"
           style={{ paddingRight: 8 }}
         />
       </View>

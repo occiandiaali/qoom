@@ -12,6 +12,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import ProfileScreen from "../../features/account/profile";
 import SettingsScreen from "../../features/ambit/settings";
 import LinkDetailScreen from "../../features/favlinks/LinkDetailScreen";
+import AddLinkScreen from "../../features/favlinks/AddLinkScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -48,7 +49,7 @@ function LinksStack() {
         name="links"
         component={FavLinksScreen}
       />
-      <Stack.Screen name="linkAdd" component={LinkDetailScreen} />
+      <Stack.Screen name="Link Detail" component={AddLinkScreen} />
     </Stack.Navigator>
   );
 }
@@ -84,7 +85,6 @@ const BottomNav = () => {
       })}
     >
       <Tab.Screen name="Smasher" component={StickerSmashScreen} />
-      {/* <Tab.Screen name="Ambit" component={AmbitScreen} /> */}
       <Tab.Screen name="Ambit" component={AmbitStack} />
       <Tab.Screen name="Links" component={LinksStack} />
     </Tab.Navigator>

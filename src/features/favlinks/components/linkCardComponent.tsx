@@ -4,7 +4,12 @@ import React from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Menu, MenuItem, MenuDivider } from "react-native-material-menu";
 
-const LinkCardComponent = ({ timeAdded, onMenuPress }) => {
+const LinkCardComponent = ({
+  linkText,
+  onDelPress,
+  onEditPress,
+  createdAt,
+}) => {
   const [visible, setVisible] = React.useState<boolean>();
   const hideMenu = () => setVisible(false);
   const showMenu = () => setVisible(true);
@@ -13,16 +18,13 @@ const LinkCardComponent = ({ timeAdded, onMenuPress }) => {
     <View style={styles.container}>
       <MaterialCommunityIcons name="image" size={48} color="orange" />
       <View style={styles.linkNTime}>
-        <Text style={{ fontSize: 18 }}>www.website.address</Text>
-        <Text style={{ color: "#bcbcbc" }}>added {timeAdded}</Text>
+        <Text style={{ fontSize: 18, marginBottom: 6, right: 14 }}>
+          {linkText}
+        </Text>
+        <Text style={{ fontSize: 12, color: "#bcbcbc", right: 14 }}>
+          {createdAt}
+        </Text>
       </View>
-      {/* <View>
-        <MaterialCommunityIcons 
-        onPress={onMenuPress}
-        name="dots-vertical" 
-        size={26} 
-        color="orange" />
-      </View> */}
       <View>
         <Menu
           visible={visible}
@@ -41,18 +43,25 @@ const LinkCardComponent = ({ timeAdded, onMenuPress }) => {
               hideMenu();
             }}
           >
-            Visit url
+            Open link
           </MenuItem>
           <MenuItem
             onPress={() => {
               hideMenu();
-              onMenuPress();
+              onEditPress();
             }}
           >
             Edit
           </MenuItem>
           <MenuDivider />
-          <MenuItem>Delete</MenuItem>
+          <MenuItem
+            onPress={() => {
+              hideMenu();
+              onDelPress();
+            }}
+          >
+            Delete
+          </MenuItem>
         </Menu>
       </View>
     </View>
@@ -71,10 +80,11 @@ const styles = StyleSheet.create({
     height: 120,
     borderRadius: 12,
     margin: 6,
-    // right: 6,
+    left: 2,
     backgroundColor: "white",
   },
   linkNTime: {
     padding: 6,
+    flexDirection: "column",
   },
 });

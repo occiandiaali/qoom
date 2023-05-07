@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
-import AddLink from "./addLink";
+import AddLink from "./AddLinkScreen";
 
 const LinkDetailScreen = () => {
   const [editItem, setEditItem] = useState();
