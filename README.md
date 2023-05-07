@@ -6,6 +6,10 @@ React Native Expo, GraphQL, AWS, Redux, and API multifarious app
 [![](https://img.shields.io/badge/IDE-Visual_Studio_Code-red?style=for-the-badge&logo=visual-studio-code)](https://code.visualstudio.com/ "Visual Studio Code")  
 ## Android Screens  
 
-<img src="https://user-images.githubusercontent.com/40769994/236634868-29fb20b9-1071-4b45-9e71-72dbba8c3b9b.jpg" height="500">  <img src="https://user-images.githubusercontent.com/40769994/236683853-036ce7df-54b3-4ec2-b21c-8103ace8631e.jpg" height="500">  <img src="https://user-images.githubusercontent.com/40769994/236683854-2a288e65-fa61-4f91-bfc3-49519e83ec60.jpg" height="500">  
+<img src="https://user-images.githubusercontent.com/40769994/236634868-29fb20b9-1071-4b45-9e71-72dbba8c3b9b.jpg" height="500">  <img src="https://user-images.githubusercontent.com/40769994/236692084-a10ddd79-391c-4577-869b-d0548614bbfc.jpg" height="500"> <img src="https://user-images.githubusercontent.com/40769994/236692090-c9c6e838-6211-44ee-bd42-b219f316d240.jpg" height="500">
   
-<img src="https://user-images.githubusercontent.com/40769994/236683855-45c51649-ba91-4d47-8f5c-09809814b757.jpg" height="500">  <img src="https://user-images.githubusercontent.com/40769994/236683856-707ec3da-9c2b-4bda-a5dd-f000a0faf5a0.jpg" height="500">  <img src="https://user-images.githubusercontent.com/40769994/236683860-2549c7c5-6f02-4a61-9580-ed6490d4f50d.jpg" height="500">
+<img src="https://user-images.githubusercontent.com/40769994/236683855-45c51649-ba91-4d47-8f5c-09809814b757.jpg" height="500">  <img src="https://user-images.githubusercontent.com/40769994/236692093-6f8c7990-f73e-423d-af42-c554cf0f3ad4.jpg" height="500">  <img src="https://user-images.githubusercontent.com/40769994/236683860-2549c7c5-6f02-4a61-9580-ed6490d4f50d.jpg" height="500">
+
+<img src="https://user-images.githubusercontent.com/40769994/236692089-d4d09eb3-4c16-4858-9e16-2f51b9ffc522.jpg" height="500">
+
+
