@@ -1,19 +1,48 @@
-import { Image, StyleSheet, View } from "react-native";
-import React, { useMemo, useRef, useState } from "react";
-import Animated from "react-native-reanimated";
-
-import { RenderContent } from "./components/renderContent";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import React, { useRef, useState } from "react";
+import * as ImagePicker from "expo-image-picker";
 import TopBarComponent from "./components/TopBarComponent";
 import ActionButtonComponent from "./components/ActionButtonComponent";
 import StickerModal from "./components/StickerModal";
+import ImageViewer from "./components/ImageViewer";
+import EmojiList from "./components/EmojiList";
+import EmojiSticker from "./components/EmojiSticker";
+import EmojiPicker from "./components/EmojiPicker";
 
 const StickerSmashScreen = () => {
-  const sheetRef = useRef(null);
-  const snapPoints = useMemo(() => ["25%", "50%"], []);
-  // const fall = new Animated.Value(1);
+  const [showAppOptions, setShowAppOptions] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [pickedEmoji, setPickedEmoji] = useState(null);
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const sheetRef = useRef(null);
 
-  function handleBS() {}
+  const pickImageAsync = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      allowsEditing: true,
+      quality: 1,
+    });
+    if (!result.canceled) {
+      setSelectedImage(result.assets[0].uri);
+      setShowAppOptions(true);
+      // console.log(result)
+    } else {
+      alert("No image selected!");
+    }
+  };
+
+  function onReset() {
+    setShowAppOptions(false);
+  }
+  function onAddSticker() {
+    setShowEmojiPicker(true);
+  }
+  function stickersVisible() {
+    setShowEmojiPicker(false);
+  }
+
+  const onSaveImageAsync = async () => {};
+
   function openBS() {
     if (showModal !== true) {
       setShowModal(true);
@@ -30,19 +59,44 @@ const StickerSmashScreen = () => {
 
   return (
     <View style={styles.container}>
-      <TopBarComponent onPress={() => openBS()} />
-      <Image
-        source={{
-          uri: "https://images.pexels.com/photos/11432837/pexels-photo-11432837.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load",
-        }}
-        style={styles.img}
+      <TopBarComponent onPress={openBS} />
+      <ImageViewer
+        placeholderImageSource={
+          "https://images.pexels.com/photos/11432837/pexels-photo-11432837.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load"
+        }
+        selectedImage={selectedImage}
       />
+      {pickedEmoji !== null ? (
+        <EmojiSticker imageSize={40} stickerSource={pickedEmoji} />
+      ) : null}
       <View style={styles.actionContainer}>
-        <ActionButtonComponent onPress={() => null} />
-        <ActionButtonComponent onPress={() => null} label="Use this image" />
+        {showAppOptions ? (
+          <View style={{ flexDirection: "row" }}>
+            <Pressable onPress={onReset}>
+              <Text style={{ paddingRight: 18 }}>Reset</Text>
+            </Pressable>
+            <Pressable onPress={onAddSticker}>
+              <Text style={{ paddingRight: 18 }}>Stickers</Text>
+            </Pressable>
+            <Pressable onPress={onSaveImageAsync}>
+              <Text style={{ paddingRight: 18 }}>Save</Text>
+            </Pressable>
+          </View>
+        ) : (
+          <>
+            <ActionButtonComponent onPress={pickImageAsync} />
+            <ActionButtonComponent
+              onPress={() => setShowAppOptions(true)}
+              label="Use this image"
+            />
+          </>
+        )}
       </View>
+      <EmojiPicker isVisible={showEmojiPicker} onClose={stickersVisible}>
+        <EmojiList onSelect={setPickedEmoji} onCloseModal={stickersVisible} />
+      </EmojiPicker>
       {showModal ? (
-        <StickerModal modalRef={sheetRef} onPress={() => closeBS()} />
+        <StickerModal modalRef={sheetRef} onPress={closeBS} />
       ) : null}
     </View>
   );
@@ -62,12 +116,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  img: {
-    width: 340,
-    height: 500,
-    bottom: 20,
-    borderRadius: 24,
-  },
+  // img: {
+  //   width: 340,
+  //   height: 500,
+  //   bottom: 20,
+  //   borderRadius: 24,
+  // },
   txt: {
     fontSize: 36,
   },
