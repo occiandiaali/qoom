@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { Feather } from "@expo/vector-icons";
 
-const TopBarComponent = () => {
+const TopBarComponent = ({ onPress }) => {
   return (
     <View style={styles.container}>
       <Feather
@@ -10,6 +10,7 @@ const TopBarComponent = () => {
         size={24}
         color="tomato"
         style={styles.vert}
+        onPress={onPress}
       />
     </View>
   );

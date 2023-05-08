@@ -1,5 +1,5 @@
 import { FlatList, StyleSheet, Text, TextInput, View } from "react-native";
-import React from "react";
+import React, { useRef } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Entypo, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import LinkCardComponent from "./components/linkCardComponent";
@@ -47,10 +47,12 @@ const times1: { id: number; time: string }[] = [];
 
 const FavLinksScreen = () => {
   const [focused, setFocused] = React.useState(false);
-  const [searchTerm, setSearchTerm] = React.useState(null);
+  const [searchTerm, setSearchTerm] = React.useState("");
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const { count, links, creationDate } = useSelector((state) => state.links);
+  const { count, links } = useSelector((state) => state.links);
+
+  const inputRef = useRef(null);
 
   function handleEditLink(id: number) {
     // setEditItem(item);
@@ -94,15 +96,23 @@ const FavLinksScreen = () => {
           <View style={styles.inputView}>
             <Ionicons name="search" size={24} />
             <TextInput
+              ref={inputRef}
               placeholder="Search"
               style={styles.input}
-              value={links}
+              value={links.address}
               onChangeText={(q) => {
                 q.length > 0 ? setFocused(true) : setFocused(false);
               }}
             />
             {focused ? (
-              <Entypo name="cross" size={20} style={styles.cross} />
+              <Entypo
+                name="cross"
+                size={20}
+                style={styles.cross}
+                onPress={() => {
+                  setFocused(false);
+                }}
+              />
             ) : null}
           </View>
           <View
@@ -123,7 +133,7 @@ const FavLinksScreen = () => {
                 linkText={item.address}
                 onEditPress={() => handleEditLink(item.id)}
                 onDelPress={() => handleRemoveLink(item.id)}
-                createdAt={creationDate}
+                createdAt={item.creationDate}
               />
             )}
             keyExtractor={(item) => item.id.toString()}

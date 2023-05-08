@@ -5,6 +5,7 @@ type WebLink = {
   address: string;
   secret: string;
   description: string;
+  creationDate: string;
 };
 // type InitialStateType = {
 //   count: number;
@@ -20,7 +21,6 @@ let nextLinkId = 1;
 const initialState = {
   count: 0,
   links: [] as WebLink[],
-  creationDate: new Date().toLocaleString(),
 };
 
 export const linksSlice = createSlice({
@@ -31,12 +31,13 @@ export const linksSlice = createSlice({
     //   state.push({ id: nextLinkId++, text: action.payload });
     // },
     newLink: (state, action) => {
+      const now = new Date().toLocaleString();
       const link = {
         id: Math.random() * 100,
         address: action.payload,
         secret: action.payload,
         description: action.payload,
-        // creationDate: action.payload,
+        creationDate: now,
       };
       state.links.push(link);
       state.count += 1;
